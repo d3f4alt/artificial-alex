@@ -1,2 +1,3 @@
 # artificial-alex
-basic
+
+basic discord bot buil with discord.js
