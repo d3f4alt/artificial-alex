@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const token = 'no looky';
+const token = 'Mjk2ODg5MTk3MzcxOTgxODM1.C76u2Q.gH2eNNkC3y7mQjzlMdtQfQ35Cbg';
 var ProfanityBlock = true;
 
 client.on('ready', () => {
@@ -37,6 +37,10 @@ client.on('message', message => {
             ProfanityBlock = true;
             message.channel.sendMessage('ProfanityBlock is now on');
         }
+    }
+
+    if(message.content.toLowerCase().startsWith('?echo')){
+        message.channel.sendMessage(message.content.substr(6, message.content.length));
     }
 
     if(message.content.toLowerCase() === '?channelinfo') {
