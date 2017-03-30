@@ -25,8 +25,8 @@ client.on('message', message => {
         message.channel.sendMessage('https://github.com/d3f4alt/artificial-alex ');
     }
 
-    if(message.content.toLowerCase() === '?userid') {
-        message.channel.sendMessage(message.author.id);
+    if(message.content.toLowerCase().startsWith('?userinfo')) {
+        message.channel.sendMessage(message.content.substr(10, message.content.length));
     }
 
     if(message.content.toLowerCase() === '?toggleprofanity') {
@@ -60,9 +60,10 @@ client.on('message', message => {
         message.content.indexOf('dick') >= 0 ||
         message.content.indexOf('pussy') >= 0 ||
         message.content.indexOf('fkn') >= 0 ||
-        message.content.indexOf('dixck') >= 0) {
-                message.delete();
-                message.channel.sendMessage('**Message Deleted**, please do not swear ' + message.author);
+        message.content.indexOf('dixck') >= 0 ||
+        message.content.indexOf('cunt') >= 0) {
+            message.delete();
+            message.channel.sendMessage('**Message Deleted**, please do not swear ' + message.author);
         }
     }
 });
