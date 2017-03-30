@@ -7,17 +7,21 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
-    if(message.content === 'ping') {
+    if(message.content === '?ping') {
         message.channel.sendMessage('pong');
     }
 
-    if(message.content === '!avatar') {
+    if(message.content === '?avatar') {
         message.channel.sendMessage(message.author.username + '\'s avatar:');
         message.channel.sendMessage(message.author.avatarURL);
     }
 
     if(message.content === 'clear') {
         message.delete();
+    }
+
+    if(message.content === '?github') {
+        message.channel.sendMessage('https://github.com/d3f4alt/artificial-alex ');
     }
 });
 
