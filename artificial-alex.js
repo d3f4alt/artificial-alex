@@ -8,6 +8,8 @@ client.on('ready', () => {
 });
 
 client.on('message', message => {
+    if(message.author.bot) return;
+
     if(message.content === '?ping') {
         message.channel.sendMessage('pong');
     }
@@ -17,12 +19,18 @@ client.on('message', message => {
         message.channel.sendMessage(message.author.avatarURL);
     }
 
-    if(message.content.toLowerCase() === 'clear') {
-        message.delete();
+    if(message.content.toLowerCase().startsWith('?clear')) {
+        if(Number(message.content.substr(6, message.content.length)) === 0) {
+            message.channel.bulkDelete(0);
+            message.channel.sendMessage('Deleted **all** messages');
+        } else {
+            message.channel.bulkDelete(Number(message.content.substr(6, message.content.length)));
+            message.channel.sendMessage('Deleted **' + Number(message.content.substr(6, message.content.length)) + '** messages.')
+        }
     }
 
     if(message.content.toLowerCase() === '?github') {
-        message.channel.sendMessage('https://github.com/d3f4alt/artificial-alex ');
+        message.channel.sendMessage('https://github.com/d3f4alt/artificial-alex');
     }
 
     if(message.content.toLowerCase().startsWith('?userinfo')) {
