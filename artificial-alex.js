@@ -1,6 +1,6 @@
 const Discord = require('discord.js');
 const client = new Discord.Client();
-const token = 'no looky;
+const token = 'no looky';
 var ProfanityBlock = true;
 
 client.on('ready', () => {
